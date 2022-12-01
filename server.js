@@ -4,18 +4,17 @@ const app = express()
 const server = require('http').createServer(app)
 const io = new Server().listen(server)
 server.listen(3001)
-expressServer.get('/', function (request, response) {
+app.get('/', function (request, response) {
   response.sendFile(__dirname + '/app/index.html')
 })
-expressServer.get('/roomselector', function (request, response) {
+app.get('/roomselector', function (request, response) {
   response.sendFile(__dirname + '/app/index.html')
 })
-expressServer.get('/game', function (request, response) {
+app.get('/game', function (request, response) {
   response.sendFile(__dirname + '/app/index.html')
 })
 
 const rooms = io.of('/').adapter.rooms
-const sids = io.of('/').adapter.sids
 
 io.of('/').adapter.on('create-room', (room) => {
   console.log(`room ${room} was created`)
